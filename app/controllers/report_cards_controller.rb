@@ -15,6 +15,9 @@ class ReportCardsController < ApplicationController
   # GET /report_cards/new
   def new
     @report_card = ReportCard.new
+    test = Array.new
+    params[:answer].each { |a| test.push(a[1])}
+    #binding.pry
   end
 
   # GET /report_cards/1/edit
