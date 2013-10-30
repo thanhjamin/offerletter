@@ -9,8 +9,7 @@ class QuestionsController < ApplicationController
     if current_user.admin?
       render 'index'
     else
-      @report_card = ReportCard.new
-      render 'test'
+      redirect_to new_solution_path()
     end
   end
 
