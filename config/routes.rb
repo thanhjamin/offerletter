@@ -1,20 +1,17 @@
 Offerletter::Application.routes.draw do
   resources :solutions
   resources :report_cards
-  resources :users
 
   resources :tests do
     resources :questions
   end
 
-  get 'tests/:id/questions', to: 'report_cards#index', as: :report
-
   devise_for :users,
              controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
+  resources :users
+
   root to: 'welcome#index'
-
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
