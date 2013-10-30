@@ -1,12 +1,7 @@
 Offerletter::Application.routes.draw do
-<<<<<<< HEAD
   resources :solutions
-
- resources :report_cards
-=======
   resources :report_cards
   resources :users
->>>>>>> 6ac932b5ccc887ed288d9bd3a5f08276adf7ec89
 
   resources :tests do
     resources :questions

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030215957) do
+ActiveRecord::Schema.define(version: 20131030223411) do
 
   create_table "questions", force: true do |t|
     t.string   "title"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20131030215957) do
     t.string   "answer_four"
     t.string   "answer_five"
     t.integer  "correct_answer"
+    t.integer  "position"
   end
 
   create_table "report_cards", force: true do |t|
