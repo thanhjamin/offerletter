@@ -1,13 +1,11 @@
 one:
+  name: Admin
   email: user@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
   role: admin
 
 two:
+  name: No Name
   email: james@tired.com
-  encrypted_password: <%= User.new.send(:password_digest, 'password1') %>
-
-three:
-  email: thanh@businessallday.com
-  encrypted_password: <%= User.new.send(:password_digest, 'password2') %>
-
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  role: user

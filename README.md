@@ -21,7 +21,7 @@ Take more tests
 
 Screenshots of your application below:
 
-![landing_page](/public/screenshot.jpg?raw=true)
+![landing_page](/public/offerletter.png?raw=true)
 
 ## Authors
 

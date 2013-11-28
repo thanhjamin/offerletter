@@ -7,7 +7,7 @@ feature "As a user, I want to sign in to the app so that I can access my content
     click_on "Sign In"
 
     # When the user creates a new session
-    within ('#myModal') do
+    within ('#signin') do
       sign_in(:one)
     end
 
@@ -17,35 +17,42 @@ feature "As a user, I want to sign in to the app so that I can access my content
     page.wont_have_content "Sign In"
   end
 
-    # with help from https://github.com/intridea/omniauth/wiki/Integration-Testing
+  # with help from https://github.com/intridea/omniauth/wiki/Integration-Testing
 
-    scenario "sign in with linkedin works" do
-      visit root_path
-      click_on "Sign In"
+  scenario "sign in with linkedin works" do
+    visit root_path
+
+    within(:xpath, "//*[@id='signin']/div/div") do
       OmniAuth.config.test_mode = true
       Capybara.current_session.driver.request.env['devise.mapping'] = Devise.mappings[:user]
       Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:linkedin]
       OmniAuth.config.add_mock(:linkedin,
       {
         uid: '12345',
-        info: { nickname: 'test_linkedin_user'},
-        })
-      first(:link, "Login with Linkedin").click
-      page.must_have_content "you are signed in!"
+        info: { email: 'test@example.com', nickname: 'test_linkedin_user'},
+      })
+
+      click_on 'Login with Linkedin'
     end
 
-    scenario "sign in with github works" do
-      visit root_path
-      click_on "Sign In"
+    page.must_have_content "you are signed in!"
+  end
+
+  scenario "sign in with github works" do
+    visit root_path
+    within(:xpath, "//*[@id='signin']/div/div") do
       OmniAuth.config.test_mode = true
       Capybara.current_session.driver.request.env['devise.mapping'] = Devise.mappings[:user]
       Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
       OmniAuth.config.add_mock(:github,
       {
         uid: '12345',
-        info: { nickname: 'test_github_user'},
-        })
+        info: { email: 'test@example.com', nickname: 'test_github_user'},
+      })
+
       first(:link, "Login with Github").click
-      page.must_have_content "you are signed in!"
     end
+
+    page.must_have_content "you are signed in!"
   end
+end

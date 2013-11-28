@@ -1,4 +1,4 @@
-class Test < ActiveRecord::Base
+class Exam < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   accepts_nested_attributes_for :questions, allow_destroy: true
 
@@ -27,7 +27,7 @@ class Test < ActiveRecord::Base
           end
         end
       end
-      return ((score / questions.size.to_f) * 100).to_s + ' %'
+      return ((score / questions.size.to_f) * 100).round(2).to_s + ' %'
     end
   end
 end

@@ -11,7 +11,6 @@ require "minitest/focus"
 require "minitest/colorize"
 
 include Devise::TestHelpers
-Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
 class ActiveSupport::TestCase
   include Capybara::DSL
@@ -24,9 +23,11 @@ class ActiveSupport::TestCase
   def sign_in(one)
     puts users(one).email
     visit new_user_session_path
-    fill_in "email", with: users(one).email
-    fill_in "password", with: "password"
-    click_on "Sign in"
+    within(:xpath, "//*[@id='signin']/div/div") do
+      fill_in "email", with: users(one).email
+      fill_in "password", with: "password"
+      click_on "Sign in"
+    end
   end
 
   # Add more helper methods to be used by all tests here...

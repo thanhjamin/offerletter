@@ -11,7 +11,7 @@
     <div class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
         <li>
-          <%= link_to 'Practice', tests_path %>
+          <%= link_to 'Practice', exams_path %>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -23,22 +23,22 @@
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             <li class="divider"></li>
             <% if current_user.admin? %>
-            <li><%= link_to 'Create Test', new_test_path %></li>
+            <li><%= link_to 'Create Exam', new_exam_path %></li>
             <% end %>
             <li><%= link_to "Help", '#' %></li>
           </ul>
         </li>
         <% else %>
         <!-- Button trigger modal -->
-        <li><%= link_to "Sign In", "#myModal", "data-toggle" => "modal", :class => "btn btn-clear" %></li>
+        <li><%= link_to "Sign In", "#signin", "data-toggle" => "modal", :class => "btn btn-clear" %></li>
         <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="signinLabel" aria-hidden="true">
           <div class="modal-dialog">
             <%= render "layouts/modals/signin" %>
           </div>
         </div><!-- /.modal -->
-        <li class="create-account"><%= link_to "Create Account", "#myModal1", "data-toggle" => "modal", :class => "btn btn-primary" %></li>
-        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <li class="create-account"><%= link_to "Create Account", "#signup", "data-toggle" => "modal", :class => "btn btn-primary" %></li>
+        <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signinLabel" aria-hidden="true">
           <div class="modal-dialog">
             <%= render "layouts/modals/signup" %>
             <% end %>
